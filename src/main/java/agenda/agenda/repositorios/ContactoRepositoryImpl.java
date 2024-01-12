@@ -48,4 +48,13 @@ public class ContactoRepositoryImpl implements ContactoRepository {
     public void eliminar(Long id) {
         contactos.remove(id);
     }
+
+    @Override
+    public Contacto modificarContacto(Long id, Contacto contacto) {
+        if (contacto.getId() == null) {
+            contacto.setId(idSecuencia++);
+        }
+        contactos.put(contacto.getId(), contacto);
+        return contacto;
+    }
 }
